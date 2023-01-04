@@ -1,17 +1,21 @@
 'use strict';
 
-const numberOfFilms = +prompt('How many movies did you watch?', '');
-const lastWatchedMovies = prompt('Some movies that you watch?');
-const movieRating = prompt('How do you evaluete them?');
+const num = 50;
 
-const personalMoviesDB = {
-	count: numberOfFilms,
-	movies: {},
-	actors: {},
-	genres: [],
-	privat: false,
-};
-
-personalMoviesDB.movies[lastWatchedMovies] = movieRating;
-
-console.log(personalMoviesDB);
+switch (num) {
+	case 49:
+		console.log('no');
+		break;
+	case 100:
+		console.log('nope');
+		break;
+	case 50:
+		console.log('yass');
+		break;
+	case 82:
+		console.log('no');
+		break;
+	default:
+		console.log('next time');
+		break;
+}
