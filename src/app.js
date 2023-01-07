@@ -1,17 +1,21 @@
 'use strict';
 
-console.log( NaN || 2 || undefined ); // 2
+let num = 50;
 
-console.log( NaN && 2 && undefined ); // NaN
+// while (num <= 55) {
+// 	console.log(num);
+// 	num++;
+// }
 
-console.log( 1 && 2 && 3 ); // 3
+do {
+	console.log(num);
+	num++;
+} while (num <= 55);
 
-console.log( !1 && 2 || !3 ); // false
-
-console.log( 25 || null && !3 ); // 25
-
-console.log( NaN || null || !3 || undefined || 5); // 5
-
-console.log( NaN || null && !3 && undefined || 5); // 5
-
-console.log( 5 === 5 && 3 > 1 || 5); // true
+for (let i = 1; i < 10; i++) {
+	if (i === 6) {
+		// break
+		continue
+	}
+	console.log(i);
+}
