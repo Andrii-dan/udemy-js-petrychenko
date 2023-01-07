@@ -1,21 +1,17 @@
 'use strict';
 
-const num = 50;
+console.log( NaN || 2 || undefined ); // 2
 
-switch (num) {
-	case 49:
-		console.log('no');
-		break;
-	case 100:
-		console.log('nope');
-		break;
-	case 50:
-		console.log('yass');
-		break;
-	case 82:
-		console.log('no');
-		break;
-	default:
-		console.log('next time');
-		break;
-}
+console.log( NaN && 2 && undefined ); // NaN
+
+console.log( 1 && 2 && 3 ); // 3
+
+console.log( !1 && 2 || !3 ); // false
+
+console.log( 25 || null && !3 ); // 25
+
+console.log( NaN || null || !3 || undefined || 5); // 5
+
+console.log( NaN || null && !3 && undefined || 5); // 5
+
+console.log( 5 === 5 && 3 > 1 || 5); // true
