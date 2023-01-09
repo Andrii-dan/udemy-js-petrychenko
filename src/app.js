@@ -1,21 +1,21 @@
 'use strict';
 
-let num = 50;
+const arr = []
 
-// while (num <= 55) {
-// 	console.log(num);
-// 	num++;
-// }
+for (let i = 0; i < 5; i++) {
+	arr.push('*')
+	console.log(arr.join(""));
+} 
 
-do {
-	console.log(num);
-	num++;
-} while (num <= 55);
+let tree = '';
 
-for (let i = 1; i < 10; i++) {
-	if (i === 6) {
-		// break
-		continue
+for ( let i = 1; i < 7; i++) {
+	
+	for (j = 1; j < i; j++) {
+		tree += '*'
 	}
-	console.log(i);
+
+	tree += '\n'
 }
+
+console.log(tree);
