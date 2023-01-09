@@ -1,56 +1,34 @@
 'use strict';
 
-// 1st task
-for (let i = 5; i <= 10; i++) {
-	console.log(i);
+//first task
+const array1 = [3, 5, 8, 16, 20, 23, 50];
+const result = [];
+
+for (let i = 0; i < array1.length; i++) {
+	result[i] = array1[i];
 }
 
-let num = 4;
-
-do {
-	num++;
-	console.log(num);
-} while (num < 10);
+console.log(result);
 
 //second task
-for (let j = 20; j >= 10; j--) {
-	if (j === 13) {
-		break;
-	}
-	console.log(j);
-}
+const data = [5, 10, 'Shopping', 20, 'Homework'];
 
-// third task
-for (let i = 2; i <= 10; i++) {
-	if (i % 2 === 0) {
-		console.log(i);
+for (let i = 0; i < data.length; i++) {
+	if (typeof data[i] === 'number') {
+		data[i] *= 2;
+	} else if (typeof data[i] === 'string') {
+		data[i] += ' - done';
 	}
 }
 
-//fourth task
-for (let i = 2; i <= 16; i++) {
-	if (i % 2 === 0) {
-		continue;
-	} else {
-		console.log(i);
-	}
+console.log(data);
+
+//third task
+const data1 = [5, 10, 'Shopping', 20, 'Homework'];
+const data2 = [];
+
+for (let i = 0; i < data1.length; i++) {
+	data2[i] = data1[data1.length - (i + 1)];
 }
 
-let number = 2;
-
-while (number < 16) {
-	number++;
-	if (number % 2 === 0) {
-		continue;
-	} else {
-		console.log(number);
-	}
-}
-
-//fifth task
-let arr = [];
-
-for (let i = 0; i <= 5; i++) {
-	arr[i] = i + 5;
-}
-console.log(arr);
+console.log(data2);
