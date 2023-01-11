@@ -1,51 +1,36 @@
 'use strict';
 
 //first task
-const array1 = [3, 5, 8, 16, 20, 23, 50];
-const result = [];
-
-for (let i = 0; i < array1.length; i++) {
-	result[i] = array1[i];
+function greating(name) {
+	return 'Hello' + ' ' + name;
 }
 
-console.log(result);
+console.log(greating('Joe'));
 
 //second task
-const data = [5, 10, 'Shopping', 20, 'Homework'];
+function returnNeighboringNumbers(number) {
+	return [number - 1, number, number + 1];
+}
 
-for (let i = 0; i < data.length; i++) {
-	if (typeof data[i] === 'number') {
-		data[i] *= 2;
-	} else if (typeof data[i] === 'string') {
-		data[i] += ' - done';
+console.log(returnNeighboringNumbers(53));
+
+//third task
+function getMathResult(firstNum, secondNum) {
+	let str = '---';
+	let result = '';
+
+	if (typeof secondNum !== 'number' || secondNum <= 0) {
+		return firstNum;
+	} else {
+		for (let i = 1; i <= secondNum; i++) {
+			if (i === secondNum) {
+				result += firstNum * i;
+			} else {
+				result += firstNum * i + str;
+			}
+		}
+		return result;
 	}
 }
 
-console.log(data);
-
-//third task
-const data1 = [5, 10, 'Shopping', 20, 'Homework'];
-const data2 = [];
-
-for (let i = 0; i < data1.length; i++) {
-	data2[i] = data1[data1.length - (i + 1)];
-}
-
-console.log(data2);
-
-
-//harder task
-const lines = 5;
-let result1 = '';
-
-for (let i = 0; i <= lines; i++) {
-    for (let j = 0; j < lines - i; j++) {
-        result1 += " ";
-    }
-    for (let j = 0; j < 2 * i + 1; j++) {
-        result1 += "*";
-    }
-    result1 += "\n";
-}
-
-console.log(result1)
+console.log(getMathResult(20, 6));
