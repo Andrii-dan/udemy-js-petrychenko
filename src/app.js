@@ -1,36 +1,71 @@
 'use strict';
 
-//first task
-function greating(name) {
-	return 'Hello' + ' ' + name;
-}
+let numberOfFilms;
 
-console.log(greating('Joe'));
+function start() {
+	numberOfFilms = +prompt('How much movies did you watched?', '');
 
-//second task
-function returnNeighboringNumbers(number) {
-	return [number - 1, number, number + 1];
-}
-
-console.log(returnNeighboringNumbers(53));
-
-//third task
-function getMathResult(firstNum, secondNum) {
-	let str = '---';
-	let result = '';
-
-	if (typeof secondNum !== 'number' || secondNum <= 0) {
-		return firstNum;
-	} else {
-		for (let i = 1; i <= secondNum; i++) {
-			if (i === secondNum) {
-				result += firstNum * i;
-			} else {
-				result += firstNum * i + str;
-			}
-		}
-		return result;
+	while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+		numberOfFilms = +prompt('How much movies did you watched?', '');
 	}
 }
 
-console.log(getMathResult(20, 6));
+start();
+
+const personalMovieDB = {
+	count: numberOfFilms,
+	movies: {},
+	actors: {},
+	genres: [],
+	privat: false,
+};
+
+function rememberMyFilms() {
+	for (let i = 0; i < 2; i++) {
+		const a = prompt('One of last movies that you watched...', '');
+		const b = prompt('How do you evaluate it?', '');
+
+		if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+			personalMovieDB.movies[a] = b;
+			console.log('done');
+		} else {
+			console.log('error');
+			i--;
+		}
+	}
+}
+
+rememberMyFilms();
+
+function detectPersonalLevel() {
+	if (personalMovieDB.count < 10) {
+		console.log("It's too low");
+	} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+		console.log("It's ok");
+	} else if (personalMovieDB.count >= 30) {
+		console.log('Great!');
+	} else {
+		console.log('error');
+	}
+}
+
+detectPersonalLevel();
+
+function showMyDB() {
+	if (!personalMovieDB.privat) {
+		console.log(personalMovieDB);
+	}
+}
+
+showMyDB();
+
+function writeYourGenres() {
+	for (let i = 0; i < 3; i++) {
+		const a = prompt(`What is your favourite genre #${i+1}?`);
+		personalMovieDB.genres[i] = a; 
+	}
+}
+
+writeYourGenres();
+
+console.log(personalMovieDB);
