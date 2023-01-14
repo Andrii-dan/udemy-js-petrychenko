@@ -1,36 +1,25 @@
 'use strict';
 
-// Создайте функцию, которая будет принимать в себя один аргумент-целое положительное число. Она должна возвращать строку, в которой будут через пробел выведены числа Фибоначчи. Причем, их количество должно быть равно переданному аргументу.
+const options = {
+	name: 'test',
+	width: 1024,
+	height: 1024,
+	colors: {
+		border: 'black',
+		bg: 'red',
+	},
+};
 
-// Если переданный аргумент не число - вернуть пустую строку. Решать без применения рекурсии.
-
-// Пример:
-
-// fib(4) => ''0 1 1 2"
-
-// fib(7) => ''0 1 1 2 3 5 8"
-
-// fib('7') => ''"
-
-// fib(1) => "0"
-
-// fib(0) => ''"
-
-function fib(number) {
-	const arr = [];
-
-	if (typeof number !== 'number' || !Number.isInteger(number) || number < 0) {
-		return '';
-	}
-
-	for (let i = 0; i < number; i++) {
-		if (i <= 1) {
-			arr[i] = i;
-		} else {
-			arr[i] = arr[i - 1] + arr[i - 2];
+// iterate through object 
+for (let key in options) {
+	if (typeof options[key] === 'object') {
+		for (let i in options[key]) {
+			console.log(`Values ${i} is ${options[key][i]}`);
 		}
+	} else {
+		console.log(`Values ${key} is ${options[key]}`);
 	}
-	return arr.join(' ');
 }
 
-console.log(fib(7));
+// get object length
+console.log(Object.keys(options).length);
