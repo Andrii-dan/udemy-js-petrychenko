@@ -1,104 +1,70 @@
 'use strict';
 
-// let numberOfFilms;
+// 1) Создайте функцию, которая принимает в себя целое число минут и возвращает время в нужном формате строки. (Смотри пример). Обратите внимание на окончание слова "час" - оно меняется в зависимости от цифры. Если вместо аргумента приходит не число, дробное или отрицательное число - функция возвращает строку "Ошибка, проверьте данные"
 
-// function start() {
-// 	numberOfFilms = +prompt('How much movies did you watched?', '');
+// Внимание! Давайте пока ограничимся максимум 600ю минутами (10 часов). Так как проверки на большие числа будут раздувать код (33 часа, 31 час, 11 часов и тд). Этого будет достаточно и код будет проверять именно этот промежуток (1 - 10 часов). Но вы можете реализовать и полный скрипт, он тоже должен проходить тесты.
 
-// 	while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-// 		numberOfFilms = +prompt('How much movies did you watched?', '');
-// 	}
-// }
+// Пример:
 
-// start();
+// getTimeFromMinutes(150) => "Это 2 часа и 30 минут"
 
-// const personalMovieDB = {
-// 	count: numberOfFilms,
-// 	movies: {},
-// 	actors: {},
-// 	genres: [],
-// 	privat: false,
-// };
+// getTimeFromMinutes(50) => "Это 0 часов и 50 минут"
 
-// function rememberMyFilms() {
-// 	for (let i = 0; i < 2; i++) {
-// 		const a = prompt('One of last movies that you watched...', '');
-// 		const b = prompt('How do you evaluate it?', '');
+// getTimeFromMinutes(0) => "Это 0 часов и 0 минут"
 
-// 		if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-// 			personalMovieDB.movies[a] = b;
-// 			console.log('done');
-// 		} else {
-// 			console.log('error');
-// 			i--;
-// 		}
-// 	}
-// }
+// getTimeFromMinutes(-150) => "Ошибка, проверьте данные"
 
-// rememberMyFilms();
-
-// function detectPersonalLevel() {
-// 	if (personalMovieDB.count < 10) {
-// 		console.log("It's too low");
-// 	} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-// 		console.log("It's ok");
-// 	} else if (personalMovieDB.count >= 30) {
-// 		console.log('Great!');
-// 	} else {
-// 		console.log('error');
-// 	}
-// }
-
-// detectPersonalLevel();
-
-// function showMyDB() {
-// 	if (!personalMovieDB.privat) {
-// 		console.log(personalMovieDB);
-// 	}
-// }
-
-// showMyDB();
-
-// function writeYourGenres() {
-// 	for (let i = 0; i < 3; i++) {
-// 		const a = prompt(`What is your favourite genre #${i+1}?`);
-// 		personalMovieDB.genres[i] = a;
-// 	}
-// }
-
-// writeYourGenres();
-
-// console.log(personalMovieDB);
-
-function calculateVolumeAndArea(sideLength) {
-	let volume;
-	let area;
+function getTimeFromMinutes(amountOfminutes) {
+	let time;
+	let hours;
+	let minutes;
 
 	if (
-		typeof sideLength !== 'number' ||
-		sideLength <= 0 ||
-		!Number.isInteger(sideLength)
+		typeof amountOfminutes !== 'number' ||
+		!Number.isInteger(amountOfminutes) ||
+		amountOfminutes < 0
 	) {
-		return 'something went wrong!';
-	} else {
-		volume = Math.pow(sideLength, 3);
-		area = Math.pow(sideLength, 2) * 6;
-		return `volume of the cube: ${volume}, \narea of the cube: ${area}`;
+		return 'Ошибка, проверьте данные';
 	}
+
+	time = amountOfminutes / 60;
+	hours = Math.trunc(time);
+	minutes = ((time % 1) * 60).toFixed();
+
+	let hoursStr =
+		hours === 1
+			? 'час'
+			: hours <= 4 && hours >= 2
+			? 'часа'
+			: hours >= 5 && hours <= 10
+			? 'часов'
+			: 'часов';
+
+	return `Это ${hours} ${hoursStr} и ${minutes} минут`;
 }
 
-console.log(calculateVolumeAndArea(15));
+console.log(getTimeFromMinutes(154));
 
-function getCoupeNumber(number) {
-	let compartment;
-	if (typeof number !== 'number' || !Number.isInteger(number) || number < 0) {
-		return 'Something went wrong! Please check entered number';
-	} else if (number === 0 || number > 36) {
-		return `Place with entered number doesn't exist!`;
-	} else {
-		compartment = Math.ceil(number / 4);
-		return compartment;
+// 2) Напишите функцию, которая принимает в себя 4 числа и возвращает самое большее из них. Если один из аргументов не является числом или их меньше 4 - возвращается 0. Дробные числа разрешены.
+
+// Пример:
+
+// findMaxNumber(1, 5, 6.6, 11); =>  11
+
+// findMaxNumber(1, 5, '6', '10');  =>  0
+
+// У этой задачи есть очень много вариантов решения, в том числе и встроенное в JS. Подходит любое :)
+
+function findMaxNumber(a, b, c, d) {
+	const arr = [a, b, c, d];
+
+	for (let i = 0; i < arr.length; i++) {
+		if (typeof arr[i] !== 'number') {
+			return 0;
+		}
 	}
+
+	return Math.max(...arr);
 }
 
-console.log(getCoupeNumber(37));
+console.log(findMaxNumber(1, -5, 6.6, 8));
