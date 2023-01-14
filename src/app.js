@@ -8,9 +8,12 @@ const options = {
 		border: 'black',
 		bg: 'red',
 	},
+	makeTest: function () {
+		console.log('test');
+	},
 };
 
-// iterate through object 
+// iterate through object
 for (let key in options) {
 	if (typeof options[key] === 'object') {
 		for (let i in options[key]) {
@@ -23,3 +26,6 @@ for (let key in options) {
 
 // get object length
 console.log(Object.keys(options).length);
+
+// custom method inside object
+options.makeTest()
