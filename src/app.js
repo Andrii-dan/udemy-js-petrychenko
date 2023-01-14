@@ -29,3 +29,8 @@ console.log(Object.keys(options).length);
 
 // custom method inside object
 options.makeTest()
+
+// object destruction
+const {border, bg} = options.colors
+
+console.log(border);
