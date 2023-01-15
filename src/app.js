@@ -1,7 +1,29 @@
 'use strict';
 
-const arr = [1, 2, 3, 6, 8];
+function copyObj(mainObj) {
+	let objCopy = {};
 
-arr.forEach((el, index, arr) => {
-	console.log(`${el}: ${index} inside ${arr} array`);
-});
+	for (let key in mainObj) {
+		objCopy[key] = mainObj[key];
+	}
+
+	return objCopy;
+}
+
+const numbers = {
+	a: 2,
+	b: 7,
+	c: {
+		x: 23,
+		y: 54,
+	},
+};
+
+const newNumbers = copyObj(numbers);
+
+newNumbers.a = 10;
+newNumbers.c.x = 20;
+
+console.log(numbers);
+
+console.log(newNumbers);
