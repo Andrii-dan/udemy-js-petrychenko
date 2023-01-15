@@ -35,8 +35,15 @@ const add = {
 
 const clone = Object.assign({}, add);
 
-clone.d = 20
+clone.d = 20;
 
 console.log(add);
-
 console.log(clone);
+
+const array = ['a', 'b', 'c'];
+const newArray = array.slice();
+
+newArray[1] = 'test'
+
+console.log(array);
+console.log(newArray);
