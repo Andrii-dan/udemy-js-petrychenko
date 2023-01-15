@@ -27,3 +27,16 @@ newNumbers.c.x = 20;
 console.log(numbers);
 
 console.log(newNumbers);
+
+const add = {
+	d: 17,
+	e: 20,
+};
+
+const clone = Object.assign({}, add);
+
+clone.d = 20
+
+console.log(add);
+
+console.log(clone);
