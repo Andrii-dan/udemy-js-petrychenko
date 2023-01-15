@@ -1,78 +1,76 @@
 'use strict';
 
-function copyObj(mainObj) {
-	let objCopy = {};
+// У вас есть готовый объект с данными. Разработчик Х хочет написать часть функционала, но ему не хватает навыков. Выполните часть заданий за него.
 
-	for (let key in mainObj) {
-		objCopy[key] = mainObj[key];
-	}
+// Задачи:
 
-	return objCopy;
-}
+// 1) Напишите функцию showExperience, которая будет принимать в себя объект со всеми данными и возвращать строку с опытом.
 
-const numbers = {
-	a: 2,
-	b: 7,
-	c: {
-		x: 23,
-		y: 54,
+// Пример:
+
+// showExperience(personalPlanPeter) => '1 month'
+
+// P.S. желательно использовать деструктуризацию, но не обязательно
+
+const personalPlanPeter = {
+	name: 'Peter',
+	age: '29',
+	skills: {
+		languages: ['ru', 'eng'],
+		programmingLangs: {
+			js: '20%',
+			php: '10%',
+		},
+		exp: '1 month',
+	},
+	showAgeAndLangs: function (obj) {
+		const age = obj.age;
+		const langs = [...obj.skills.languages];
+
+		return `Мне ${age} и я владею языками: ${langs.join(' ').toUpperCase()}`;
 	},
 };
 
-const newNumbers = copyObj(numbers);
-
-newNumbers.a = 10;
-newNumbers.c.x = 20;
-
-console.log(numbers);
-
-console.log(newNumbers);
-
-const add = {
-	d: 17,
-	e: 20,
-};
-
-const clone = Object.assign({}, add);
-
-clone.d = 20;
-
-console.log(add);
-console.log(clone);
-
-const array = ['a', 'b', 'c'];
-const newArray = array.slice();
-
-newArray[1] = 'test';
-
-console.log(array);
-console.log(newArray);
-
-const video = ['youtube', 'vimeo'];
-const blogs = ['wordpress', 'livejournal', 'blogger'];
-const internet = [...video, ...blogs, 'twitter', 'facebook'];
-
-console.log(internet);
-
-function log(a, b, c) {
-	console.log(a);
-	console.log(b);
-	console.log(c);
+function showExperience(plan) {
+	return plan.skills.exp;
 }
 
-const num = [2, 5, 7];
+console.log(showExperience(personalPlanPeter));
 
-log(...num);
+// 2) Напишите функцию showProgrammingLangs, которая будет принимать в себя объект со всеми данными и возвращать строку в нужном виде.
 
-const array1 = ['a', 'b'];
+// Пример:
 
-const newArray1 = [...array1];
+// showProgrammingLangs(personalPlanPeter)  =>
 
-const q = {
-	one: 1,
-	two: 2,
-};
+// "Язык js изучен на 20% Язык php изучен на 10%"
 
-const newObj = { ...q };
+// Причем функция должна работать вне зависимости от количества языков. Если ни один не указан, то возвращается пустая строка.
 
-console.log(newObj);
+// P.S. Для переноса строки используется \n в конце строки.
+
+function showProgrammingLangs(plan) {
+	const langs = plan.skills.programmingLangs;
+	let str = '';
+
+	for (let lang in langs) {
+		str += `Язык ${lang} изучен на ${langs[lang]} \n`;
+	}
+
+	return str;
+}
+
+console.log(showProgrammingLangs(personalPlanPeter));
+
+// 3) Создайте метод showAgeAndLangs внутри объекта personalPlanPeter. При его вызове метод будет принимать в себя объект и возвращать строку в нужном виде.
+
+// Пример:
+
+// personalPlanPeter.showAgeAndLangs(personalPlanPeter)
+// => 'Мне 29 и я владею языками: RU ENG'
+
+// Заметьте, что возраст и языки подставляются автоматически из объекта, а языки всегда в верхнем регистре (большими буквами). Если данные в объекте поменяются, то и сообщение тоже изменится.
+
+// P.S. Дальше по курсу мы научимся удобно обращаться из метода к самому объекту, в котором он расположен. Но пока делаем это менее удобным способом)
+
+console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter));
