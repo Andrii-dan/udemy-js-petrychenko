@@ -43,7 +43,36 @@ console.log(clone);
 const array = ['a', 'b', 'c'];
 const newArray = array.slice();
 
-newArray[1] = 'test'
+newArray[1] = 'test';
 
 console.log(array);
 console.log(newArray);
+
+const video = ['youtube', 'vimeo'];
+const blogs = ['wordpress', 'livejournal', 'blogger'];
+const internet = [...video, ...blogs, 'twitter', 'facebook'];
+
+console.log(internet);
+
+function log(a, b, c) {
+	console.log(a);
+	console.log(b);
+	console.log(c);
+}
+
+const num = [2, 5, 7];
+
+log(...num);
+
+const array1 = ['a', 'b'];
+
+const newArray1 = [...array1];
+
+const q = {
+	one: 1,
+	two: 2,
+};
+
+const newObj = { ...q };
+
+console.log(newObj);
