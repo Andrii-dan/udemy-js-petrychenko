@@ -1,41 +1,13 @@
 'use strict';
 
-console.log('Request pending...');
-
-const req = new Promise((resolve, reject) => {
-	setTimeout(() => {
-		console.log('Loading...');
-
-		const product = {
-			name: 'tv',
-			price: 200,
-		};
-
-		resolve(product);
-		// reject()
-	}, 2000);
-});
-
-req
-	.then((product) => {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				product.status = 'order';
-				resolve(product);
-			}, 2000);
-		});
-	})
-	.then((data) => {
-		data.modify = true;
-		return data;
-	})
-	.then((data) => {
-		console.log(data);
-	})
-	.catch(() => {
-		console.error('Something went wrong');
-	})
-	.finally(() => {
-        // works regardless of resolve or reject 
-		console.log('Request finished');
-	});
+fetch('https://jsonplaceholder.typicode.com/posts', {
+	method: 'POST',
+	body: JSON.stringify({
+		text: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...',
+	}),
+	headers: {
+		'Content-Type': 'application/json',
+	},
+})
+	.then((response) => response.json())
+	.then((json) => console.log(json))
