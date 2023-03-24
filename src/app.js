@@ -1,13 +1,48 @@
 'use strict';
 
-fetch('https://jsonplaceholder.typicode.com/posts', {
-	method: 'POST',
-	body: JSON.stringify({
-		text: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...',
-	}),
-	headers: {
-		'Content-Type': 'application/json',
+const films = [
+	{
+		name: 'Titanic',
+		rating: 9,
 	},
-})
-	.then((response) => response.json())
-	.then((json) => console.log(json))
+	{
+		name: 'Die hard 5',
+		rating: 5,
+	},
+	{
+		name: 'Matrix',
+		rating: 8,
+	},
+	{
+		name: 'Some bad film',
+		rating: 4,
+	},
+];
+
+function showGoodFilms(arr) {
+	return arr.filter((el) => el.rating >= 8);
+}
+
+console.log(showGoodFilms(films));
+
+function showListOfFilms(arr) {
+	return arr.map((el) => el.name).join(', ');
+}
+
+console.log(showListOfFilms(films));
+
+function setFilmsIds(arr) {
+	return arr.map((el, index) => {
+		return { ...el, id: index };
+	});
+}
+
+console.log(setFilmsIds(films));
+
+const tranformedArray = setFilmsIds(films);
+
+function checkFilms(arr) {
+	return arr.map((el) => Object.keys(el)).every((el) => el.includes('id'));
+}
+
+console.log(checkFilms(tranformedArray));
